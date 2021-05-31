@@ -32,7 +32,9 @@ public class InformationRssActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information_rss);
+
     // https://vnexpress.net/rss/suc-khoe.rss, https://vietnamnet.vn/rss/suc-khoe.rss
+
         new ReadRss().execute("https://vtc.vn/rss/suc-khoe.rss");
 
         listView = (ListView) findViewById(R.id.lvtitle);
@@ -41,14 +43,14 @@ public class InformationRssActivity extends AppCompatActivity {
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
         listView.setAdapter(adapter);
 
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    Intent intent = new Intent(InformationRssActivity.this,WebviewActivity.class);
-                    intent.putExtra("link tin tuc",arrLink.get(i));
-                    startActivity(intent);
-                }
-            });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(InformationRssActivity.this,WebviewActivity.class);
+                intent.putExtra("link tin tuc",arrLink.get(i));
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -56,7 +58,7 @@ public class InformationRssActivity extends AppCompatActivity {
     private class ReadRss extends AsyncTask<String, Void, String>{
         @Override
         protected String doInBackground(String... strings) {
-                StringBuilder content = new StringBuilder();
+            StringBuilder content = new StringBuilder();
             try {
                 URL url = new URL(strings[0]);
                 InputStreamReader inputStreamReader = new InputStreamReader(url.openConnection().getInputStream());
@@ -88,8 +90,6 @@ public class InformationRssActivity extends AppCompatActivity {
             NodeList nodeList =document.getElementsByTagName("item");
 
 
-
-
             String tieude = "";
 
             // doc list
@@ -98,8 +98,6 @@ public class InformationRssActivity extends AppCompatActivity {
                 tieude = parser.getValue(element,"title");
                 arrayList.add(tieude);
                 arrLink.add(parser.getValue(element,"link"));
-
-
 
 
             }

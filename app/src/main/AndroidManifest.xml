@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VQHCovid"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".NewsActivity">
+
+        </activity>
+        <activity android:name=".MapActivity" />
         <activity android:name=".WebviewActivity" />
         <activity android:name=".InformationRssActivity" />
         <activity android:name=".PreventionCovidActivity" />

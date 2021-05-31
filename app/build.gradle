@@ -48,4 +48,6 @@ dependencies {
 //    thu viện vẽ biểu đồ
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
+    // display image library
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 }

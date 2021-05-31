@@ -11,10 +11,10 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface ApiService {
-    Gson gson = new GsonBuilder()
-            .setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+    Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
-//    api https://api.apify.com/v2/key-value-stores/EaCBL1JNntjR3EakU/records/LATEST?disableRedirect=true
+//    api
+//    https://api.apify.com/v2/key-value-stores/EaCBL1JNntjR3EakU/records/LATEST?disableRedirect=true
 //    https://disease.sh/v3/covid-19/countries/vietnam"
     ApiService apiService = new Retrofit.Builder()
             .baseUrl("https://disease.sh/")

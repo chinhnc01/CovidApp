@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.webkit.WebView;
 
 public class MapActivity extends AppCompatActivity {
-        WebView webview_map;
+    WebView webview_map;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

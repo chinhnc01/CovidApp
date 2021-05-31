@@ -236,8 +236,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         } else if (id == R.id.tintuc_main) {
             //Toast.makeText(HomeActivity.this,"mask click",Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(HomeActivity.this, InformationRssActivity.class);
+//            Intent intent = new Intent(HomeActivity.this, InformationRssActivity.class);
+
+            Intent intent = new Intent(HomeActivity.this, NewsActivity.class);
             startActivity(intent);
+
         } else if (id == R.id.map_main) {
             //Toast.makeText(HomeActivity.this,"mask click",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(HomeActivity.this, MapActivity.class);
