@@ -1,15 +1,13 @@
-package com.example.vqhcovid;
+package com.chinhnc.covid_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -17,7 +15,6 @@ import org.w3c.dom.NodeList;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.lang.annotation.Documented;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -44,6 +41,10 @@ public class NewsActivity extends AppCompatActivity {
                 new ReadData().execute("https://vtc.vn/rss/suc-khoe.rss");
             }
         });
+
+        newsAdapter = new NewsAdapter(NewsActivity.this, android.R.layout.simple_list_item_1, lsNews);
+        lvNews.setAdapter(newsAdapter);
+
         lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -90,8 +91,8 @@ public class NewsActivity extends AppCompatActivity {
 
                 lsNews.add(new News(title, link, imageUrl));
             }
-            newsAdapter = new NewsAdapter(NewsActivity.this, android.R.layout.simple_list_item_1, lsNews);
-            lvNews.setAdapter(newsAdapter);
+
+            newsAdapter.notifyDataSetChanged();
             super.onPostExecute(s);
         }
     }

@@ -1,4 +1,4 @@
-package com.example.vqhcovid;
+package com.chinhnc.covid_app;
 import android.util.Log;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

@@ -1,31 +1,21 @@
-package com.example.vqhcovid;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
+package com.chinhnc.covid_app;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.vqhcovid.API.ApiService;
-import com.example.vqhcovid.Modul.Covid;
-import com.github.mikephil.charting.charts.LineChart;
+import com.chinhnc.covid_app.API.ApiService;
+import com.chinhnc.covid_app.Modul.Covid;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import com.example.vqhcovid.HomeActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

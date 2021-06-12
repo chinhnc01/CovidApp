@@ -1,6 +1,6 @@
-package com.example.vqhcovid.API;
+package com.chinhnc.covid_app.API;
 
-import com.example.vqhcovid.Modul.Covid;
+import com.chinhnc.covid_app.Modul.Covid;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

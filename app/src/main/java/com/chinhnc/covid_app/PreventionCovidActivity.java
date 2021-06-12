@@ -1,4 +1,4 @@
-package com.example.vqhcovid;
+package com.chinhnc.covid_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 

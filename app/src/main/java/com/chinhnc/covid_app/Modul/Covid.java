@@ -1,4 +1,4 @@
-package com.example.vqhcovid.Modul;
+package com.chinhnc.covid_app.Modul;
 
 public class Covid {
     private String lastUpdatedAtSource;

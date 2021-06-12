@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.vqhcovid">
+    package="com.chinhnc.covid_app">
     <!-- thêm để ket noi internet và android:usesCleartextTraffic="true" đẻ fix lỗi chuối khi get api -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,12 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VQHCovid"
         android:usesCleartextTraffic="true">
-        <activity android:name=".NewsActivity">
+        <activity android:name=".LoginActivity">
 
         </activity>
+
+        <meta-data
+            android:name="com.huawei.hms.client.channel.androidMarket"
+            android:value="false" />
+
+        <activity android:name=".NewsActivity"></activity>
         <activity android:name=".MapActivity" />
         <activity android:name=".WebviewActivity" />
-        <activity android:name=".InformationRssActivity" />
         <activity android:name=".PreventionCovidActivity" />
         <activity android:name=".Chartcovid" />
         <activity android:name=".HomeActivity" />
@@ -29,6 +34,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".HmsMessageService"
+            android:exported="false">
+
+            <intent-filter>
+                <action android:name="com.huawei.push.action.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="push_kit_auto_init_enabled"
+            android:value="true"/>
+
     </application>
+
+    <queries>
+        <intent>
+            <action android:name="com.huawei.hms.core.aidlservice" />
+        </intent>
+    </queries>
 
 </manifest>

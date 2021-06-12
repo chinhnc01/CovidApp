@@ -1,4 +1,4 @@
-package com.example.vqhcovid;
+package com.chinhnc.covid_app;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,13 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class NewsAdapter extends ArrayAdapter<News> {
 

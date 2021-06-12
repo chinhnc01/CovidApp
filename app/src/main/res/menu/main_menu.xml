@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item android:id="@+id/Home_main"
-            android:title="Biểu Đồ"
-            android:icon="@drawable/chart_70px" />
+            android:title="Login/Logout"
+            android:icon="@drawable/customer_70px" />
         <item android:id="@+id/mask_main"
             android:title="Sức Khoẻ"
             android:icon="@drawable/mask_emoji_70px"/>

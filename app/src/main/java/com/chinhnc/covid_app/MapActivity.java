@@ -1,8 +1,7 @@
-package com.example.vqhcovid;
+package com.chinhnc.covid_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebView;
 

@@ -1,4 +1,4 @@
-package com.example.vqhcovid;
+package com.chinhnc.covid_app;
 
 public class News {
     public String title;
