@@ -39,16 +39,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ListView listView;
-    TextView text_canhiem, text_tuvong, text_hoiphuc, text_dieutri, textViewacc;
+    TextView text_canhiem, text_tuvong, text_hoiphuc, text_dieutri,textViewacc;
     ConstraintLayout layout1;
     Button suckhoe, yte, vietnam, thegioi;
 
     String check = "0";
 
-    private AccountAuthService mAuthManager;
-    private AccountAuthParams mAuthParam;
-    String displayname_check = "";
 
+    String displayname_check ="",fullname,disname,imgurl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -235,13 +233,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         if (id == R.id.Home_main) {
             //check
+            //check
             if(displayname_check != null){
-                logout();
+                dlaccount();
             }
             else {
+                Toast.makeText(HomeActivity.this,"Bạn Chưa Đăng Nhập",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
                 startActivity(intent);
                 finish();
+
             }
 
 
@@ -259,6 +260,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             //Toast.makeText(HomeActivity.this,"mask click",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(HomeActivity.this, MapActivity.class);
             startActivity(intent);
+        }else if (id == R.id.QR_main) {
+            //Toast.makeText(HomeActivity.this,"mask click",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(HomeActivity.this, QRscanActivity.class);
+            startActivity(intent);
+
+        }else if (id == R.id.Weather_main) {
+            //Toast.makeText(HomeActivity.this,"mask click",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(HomeActivity.this, WeatherActivity.class);
+            startActivity(intent);
+
         }else if (id == R.id.sp_ins) {
             Toast.makeText(HomeActivity.this, "ins click", Toast.LENGTH_LONG).show();
             GoToURL("https://www.instagram.com/vqh.2602");
@@ -285,42 +296,38 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     //check du lieu intent
-    private void dulieuinten() {
+    private void dulieuinten(){
         Intent intent = getIntent();
         String displayname = intent.getStringExtra("Displayname");
+        fullname = intent.getStringExtra("fullname");
+        imgurl = intent.getStringExtra("Imangeurl");
+        disname =  intent.getStringExtra("Displayname");
         displayname_check = displayname;
         //check
-        if(displayname_check != null) {
-            Toast.makeText(HomeActivity.this,"Xin Chào: " + displayname, Toast.LENGTH_LONG).show();
-            textViewacc.setText("Xin chào: " + displayname_check);
+        if(displayname_check != null){
+            Toast.makeText(HomeActivity.this,"Xin Chào: "+displayname,Toast.LENGTH_LONG).show();
+            textViewacc.setText("Xin chào: "+displayname_check);
         }
         else {
-            Toast.makeText(HomeActivity.this,"Bạn chưa đăng nhập ", Toast.LENGTH_LONG).show();
+            Toast.makeText(HomeActivity.this,"Bạn chưa đăng nhập ",Toast.LENGTH_LONG).show();
         }
+
 
 
     }
+    //truyendulieu account
+    private void dlaccount(){
+        Intent intent = new Intent(HomeActivity.this,AccountActivity.class);
+        intent.putExtra("Displayname", disname);
+        intent.putExtra("fullname", fullname);
+        intent.putExtra("Imangeurl", imgurl);
+        startActivity(intent);
+    }
 
-    //logout
-    private void logout(){
-        // tạo servier
-        mAuthParam = new AccountAuthParamsHelper(AccountAuthParams.DEFAULT_AUTH_REQUEST_PARAM)
-                .setIdToken()
-                .setAccessToken()
-                .createParams();
-        mAuthManager = AccountAuthManager.getService(HomeActivity.this, mAuthParam);
-        // đăng xuất
-        Task<Void> signOutTask = mAuthManager.signOut();
-        signOutTask.addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(Task<Void> task) {
-                //Processing after the sign-out.
-                Log.i("MainActivitylogout", "signOut complete");
-                Toast.makeText(HomeActivity.this,"Đã Đăng Xuất", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+    //onclick ->xxhdpi
+    public void onClick(View v) {
+        Intent intent = new Intent(HomeActivity.this, NewsActivity.class);
+//        Intent intent = new Intent(HomeActivity.this, InformationRssActivity.class);
+        startActivity(intent);
     }
 }
