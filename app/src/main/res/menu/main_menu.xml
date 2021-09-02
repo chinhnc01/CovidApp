@@ -19,6 +19,9 @@
         <item android:id="@+id/Weather_main"
             android:title="Weather"
             android:icon="@drawable/partly_cloudy_day_70px"/>
+        <item android:id="@+id/About_main"
+            android:title="About"
+            android:icon="@drawable/high_importance_70px"/>
     </group>
 
     <item android:title="Hỗ Trợ" >

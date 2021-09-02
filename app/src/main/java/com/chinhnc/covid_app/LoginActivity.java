@@ -4,9 +4,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 
@@ -27,6 +30,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // full màn hình
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window w = getWindow();
+            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
+
         imageButton_Login = findViewById(R.id.imageButton_Login);
         button_skip = findViewById(R.id.button_skip);
 
@@ -39,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 //                startActivityForResult(service.getSignInIntent(), 8888);
 
                 AccountAuthParams authParams = new AccountAuthParamsHelper
-                (AccountAuthParams.DEFAULT_AUTH_REQUEST_PARAM).setIdToken().createParams();
+                        (AccountAuthParams.DEFAULT_AUTH_REQUEST_PARAM).setEmail().setProfile().setIdToken().setMobileNumber().createParams();
                 AccountAuthService service = AccountAuthManager.getService(LoginActivity.this, authParams);
                 startActivityForResult(service.getSignInIntent(), 8888);
             }
@@ -48,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         button_skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -65,19 +74,22 @@ public class LoginActivity extends AppCompatActivity {
             if (authAccountTask.isSuccessful()) {
                 // The sign-in is successful, and the user's ID information and ID token are obtained.
                 AuthAccount authAccount = authAccountTask.getResult();
-                Log.i("LoginActivity", "idToken:" + authAccount.getIdToken());
-                // Obtain the ID type (0: HUAWEI ID; 1: AppTouch ID).
-                Log.i("LoginActivity", "accountFlag:" + authAccount.getAccountFlag());
-                // lấy tên
-                Log.i("LoginActivity", "accountname:" + authAccount.getDisplayName());
+//                Log.i("LoginActivity", "idToken:" + authAccount.getIdToken());
+//                // Obtain the ID type (0: HUAWEI ID; 1: AppTouch ID).
+//                Log.i("LoginActivity", "accountFlag:"+ authAccount.getFamilyName () + authAccount.getGivenName());
+//                // lấy tên
+//
+//                Log.i("LoginActivitymg", "img:" + authAccount.getAccountFlag());
                 //TRUYEN DL
-                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
                 intent.putExtra("Displayname", authAccount.getDisplayName());
+                intent.putExtra("fullname", authAccount.getFamilyName ()+" " + authAccount.getGivenName());
+                intent.putExtra("Imangeurl", authAccount.getAvatarUriString());
                 startActivity(intent);
                 finish();
             } else {
                 // The sign-in failed. No processing is required. Logs are recorded for fault locating.
-                Log.e("LoginActivity", "sign in failed : " + ((ApiException) authAccountTask.getException()).getStatusCode());
+                Log.e("LoginActivity", "sign in failed : " +((ApiException) authAccountTask.getException()).getStatusCode());
             }
         }
     }

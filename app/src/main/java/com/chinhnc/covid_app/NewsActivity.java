@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -72,6 +73,7 @@ public class NewsActivity extends AppCompatActivity {
             String imageUrl = "";
             String title = "";
             String link = "";
+            String pubDate = "";
             for (int i = 0; i < nodeList.getLength(); i++) {
                 String cdata = nodeListDescription.item(i + 1).getTextContent();
 //                Pattern p = Pattern.compile("<img[^>]+src\\s*=\\s*['\"]([^'\"]+)['\"][^>]*>");
@@ -88,6 +90,8 @@ public class NewsActivity extends AppCompatActivity {
                 Element element = (Element) nodeList.item(i);
                 title = parser.getValue(element, "title");
                 link = parser.getValue(element, "link");
+                pubDate = parser.getValue(element, "pubDate");
+//                Toast.makeText(NewsActivity.this, "Date: " + pubDate, Toast.LENGTH_LONG).show();
 
                 lsNews.add(new News(title, link, imageUrl));
             }

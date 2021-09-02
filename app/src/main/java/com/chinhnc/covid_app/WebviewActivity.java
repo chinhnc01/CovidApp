@@ -23,10 +23,10 @@ public class WebviewActivity extends AppCompatActivity {
 
         String link = intent.getStringExtra("link");
 
-        webView.getSettings().setDomStorageEnabled(true);
-        webView.getSettings().setAppCacheEnabled(true);
-        webView.getSettings().setLoadsImagesAutomatically(true);
-        webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+//        webView.getSettings().setDomStorageEnabled(true);
+//        webView.getSettings().setAppCacheEnabled(true);
+        //  webView.getSettings().setLoadsImagesAutomatically(true);
+//        webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         webView.getSettings().setJavaScriptEnabled(true);
 
         webView.loadUrl(link);

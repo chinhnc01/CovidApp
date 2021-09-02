@@ -270,14 +270,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(HomeActivity.this, WeatherActivity.class);
             startActivity(intent);
 
+        }else if (id == R.id.About_main) {
+            //Toast.makeText(HomeActivity.this,"mask click",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(HomeActivity.this, AboutActivity.class);
+            startActivity(intent);
+
         }else if (id == R.id.sp_ins) {
-            Toast.makeText(HomeActivity.this, "ins click", Toast.LENGTH_LONG).show();
-            GoToURL("https://www.instagram.com/vqh.2602");
+            Toast.makeText(HomeActivity.this, "instagram", Toast.LENGTH_LONG).show();
+            GoToURL("https://www.instagram.com/vqh.26/");
         } else if (id == R.id.sp_fb) {
-            Toast.makeText(HomeActivity.this, "fb click", Toast.LENGTH_LONG).show();
-            GoToURL("https://www.facebook.com/VQHuy2602");
+            Toast.makeText(HomeActivity.this, "facebook", Toast.LENGTH_LONG).show();
+            GoToURL("https://www.facebook.com/");
         } else if (id == R.id.sp_mail) {
-            Toast.makeText(HomeActivity.this, "mail click", Toast.LENGTH_LONG).show();
+            Toast.makeText(HomeActivity.this, "mail", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(Intent.ACTION_VIEW);
             Uri data = Uri.parse("mailto:vqh2602@gmail.com");
             intent.setData(data);

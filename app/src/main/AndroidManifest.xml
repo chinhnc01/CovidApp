@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.chinhnc.covid_app">
-
     <!-- thêm để ket noi internet và android:usesCleartextTraffic="true" đẻ fix lỗi chuối khi get api -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- check network permissions -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- check wifi state -->
@@ -22,7 +21,8 @@
             <action android:name="com.huawei.hms.core.aidlservice" />
         </intent>
     </queries>
-
+    
+    <!--    android:hardwareAccelerated="false"-->
     <application
         android:allowBackup="true"
         android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
@@ -34,12 +34,24 @@
         android:theme="@style/Theme.VQHCovid"
         android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory">
-
+        <activity android:name=".AboutActivity"></activity>
         <!-- tools:replace="android:appComponentFactory" -->
         <!-- android:appComponentFactory="android.support.v4.app.CoreComponentFactory"> -->
         <meta-data
             android:name="com.huawei.hms.client.channel.androidMarket"
             android:value="false" />
+
+        <service
+            android:name=".HmsMessageService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.huawei.push.action.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="push_kit_auto_init_enabled"
+            android:value="true" />
 
         <activity android:name=".WeatherActivity" />
         <activity android:name=".QRscanActivity" />
@@ -54,10 +66,10 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

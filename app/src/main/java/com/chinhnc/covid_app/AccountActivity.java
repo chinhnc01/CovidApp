@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,10 +24,7 @@ import com.huawei.hms.support.account.request.AccountAuthParams;
 import com.huawei.hms.support.account.request.AccountAuthParamsHelper;
 import com.huawei.hms.support.account.service.AccountAuthService;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class AccountActivity extends AppCompatActivity {
 
@@ -139,6 +135,7 @@ public class AccountActivity extends AppCompatActivity {
                 Log.i("MainActivitylogout", "signOut complete");
                 Toast.makeText(AccountActivity.this,"Đã Đăng Xuất" ,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(AccountActivity.this,LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
             }
